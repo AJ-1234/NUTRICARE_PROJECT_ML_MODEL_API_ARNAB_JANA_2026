@@ -5,6 +5,7 @@ from utils.storage import create_admin_account
 
 
 # Create default admin on startup
+
 create_admin_account()
 
 
