@@ -7,6 +7,7 @@ from dependencies import get_current_active_user
 
 router = APIRouter(prefix="/api/meal-plan", tags=["Meal Plan"])
 
+
 @router.post("/generate", response_model=MealPlanResponse)
 def generate_meal_plan_endpoint(request: MealPlanRequest,
                                 current_user: Dict = Depends(get_current_active_user)):
@@ -40,11 +41,13 @@ def generate_meal_plan_endpoint(request: MealPlanRequest,
             "food_count": len(filtered_df)
         })
 
+                                  
     return MealPlanResponse(
         user_profile=ProfileWithMetrics(**profile_with_metrics),
         meal_plan=meal_plan,
         filtered_foods_count=len(filtered_df)
     )
+
 
 @router.get("/saved")
 def get_saved_plans(current_user: Dict = Depends(get_current_active_user)):
