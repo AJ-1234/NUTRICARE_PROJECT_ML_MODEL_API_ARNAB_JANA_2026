@@ -3,8 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, users, meal_plan, admin, foods, analysis
 from utils.storage import create_admin_account
 
+
 # Create default admin on startup
 create_admin_account()
+
 
 app = FastAPI(
     title="NUTRI-CARE API",
@@ -22,6 +24,7 @@ app.add_middleware(
 )
 
 # Include routers
+
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(meal_plan.router)
